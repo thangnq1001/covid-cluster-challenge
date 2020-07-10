@@ -1,5 +1,11 @@
 # covid-cluster-fe
 
+## Framework and libraries
+- Vue.js
+- vue-hexgrid
+- Bootstrap
+- vue-multiselect
+
 ## Project setup
 ```
 npm install
@@ -12,6 +18,10 @@ npm run serve
 Then access this URL
 ```
 http://localhost:8080/
+```
+Live demo:
+```
+http://elasticbeanstalk-ap-southeast-1-304647933882.s3-website-ap-southeast-1.amazonaws.com/
 ```
 
 ## Summary
