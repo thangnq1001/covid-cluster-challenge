@@ -33,12 +33,12 @@
         </Layout>
       </HexGrid>
     </div>
-    <div class="control-panel container p-3">
+    <div class="control-panel container p-4">
       <h2 class="text-center">Console</h2>
       <p class="m-0">* Type in and press Enter or click the buttons to execute</p>
       <p class="m-0">* Focus the left frame and use up/down/left/right to move the grid</p>
       <hr>
-      <div class="row">
+      <div class="row" :class="{'opacity-60': hexagons.length > 0}">
         <label for="add-first-hexagon" class="col-sm-3 col-form-label">First hexagon at (0,0)</label>
         <div class="col-sm-9">
           <input
@@ -65,7 +65,7 @@
         </div>
       </div>
       <hr>
-      <div class="row">
+      <div class="row" :class="{'opacity-60': hexagons.length === 0}">
         <label for="find-neighbors-input" class="col-sm-3 col-form-label">Find neighbors of</label>
         <div class="col-sm-9">
           <Multiselect
@@ -92,7 +92,7 @@
         </div>
       </div>
       <hr>
-      <div class="row add-neighbor">
+      <div class="row" :class="{'opacity-60': hexagons.length === 0}">
         <label for="add-neighbor-of" class="col-sm-3 col-form-label">Add neighbor of</label>
         <div class="col-sm-3">
           <Multiselect
@@ -148,7 +148,7 @@
         </div>
       </div>
       <hr>
-      <div class="row remove-hexagon">
+      <div class="row" :class="{'opacity-60': hexagons.length === 0}">
         <label for="remove-hexagon-name" class="col-sm-3 col-form-label">Remove hexagon</label>
         <div class="col-sm-9">
           <Multiselect
@@ -277,6 +277,7 @@
         // add
         this.hexagons.push({x: 0, y: 0, name: this.addFirstHexagonModel.name});
         this.saveToLocalStorage();
+        this.addFirstHexagonModel.result = message.addHexagonSuccess(this.addFirstHexagonModel.name);
       },
 
       findNeighbors() {
@@ -357,7 +358,7 @@
         let graph = buildHexagonGraph(newHexagons);
         let visitedHexagons = graph.bfsAndGetVisitedVertexes(newHexagons[0].name);
 
-        if (Object.keys(visitedHexagons).length === newHexagons.length) {
+        if (visitedHexagons.length === newHexagons.length) {
           this.hexagons = newHexagons;
           this.saveToLocalStorage();
           this.removeHexagonModel.result = message.removeHexagonSuccess(this.removeHexagonModel.name);
@@ -427,6 +428,10 @@
       .console-result, .console-button {
         margin-top: 0.25rem;
       }
+    }
+
+    .opacity-60 {
+      opacity: 0.6;
     }
   }
 </style>

@@ -1,7 +1,7 @@
 /**
  * @returns {{x, y}}
  */
-import {Graph} from "./queue";
+import {Graph} from "./data-structure";
 
 export function getNewHexagonPosition(hexagonQuery, border) {
   switch (border) {
@@ -55,6 +55,10 @@ export function getBorder(hexagon1, hexagon2) {
   return -1;
 }
 
+/**
+ * @param hexagons {[]}
+ * @returns {Graph}
+ */
 export function buildHexagonGraph(hexagons) {
   let graph = new Graph();
   if (!hexagons) {

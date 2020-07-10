@@ -85,9 +85,13 @@ export class Queue {
 
 export class Graph {
   constructor() {
+    // e.g: {A1: (B1->C1->D1), B1: (A1->C2)}
     this.adjacentsByVertex = {};
   }
 
+  /**
+   * add an edge from v to w
+   */
   addEdge(v, w) {
     if (!this.adjacentsByVertex[v]) {
       this.adjacentsByVertex[v] = new Queue();
@@ -95,11 +99,14 @@ export class Graph {
     this.adjacentsByVertex[v].push(w);
   }
 
+  /**
+   *
+   * @param entryVertex
+   * @returns {string[]|*[]}
+   */
   bfsAndGetVisitedVertexes(entryVertex) {
     if (Object.keys(this.adjacentsByVertex).length === 0 || !this.adjacentsByVertex[entryVertex]) {
-      return {
-        [entryVertex]: true
-      }
+      return [entryVertex];
     }
     let visited = {};
     let queue = new Queue();
@@ -118,6 +125,6 @@ export class Graph {
         cur = cur.next
       }
     }
-    return visited;
+    return Object.keys(visited);
   }
 }

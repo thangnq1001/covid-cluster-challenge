@@ -18,12 +18,12 @@ export const message = {
     return `Border invalid`;
   },
   addHexagonSuccess(name) {
-    return `${name} has been added`;
+    return `'${name}' has been added`;
   },
   removeHexagonSuccess(name) {
-    return `${name} has been removed`;
+    return `'${name}' has been removed`;
   },
   removeHexagonFailure(name) {
-    return `Cannot remove ${name} because all hexagons must be linked`;
+    return `Cannot remove '${name}' because all hexagons must be linked`;
   }
 };
