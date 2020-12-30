@@ -27,3 +27,5 @@ I used Breadth First Search to validate before removing a hexagon.
 
 The data is persisted on the local storage of browser.
 
+## Requirement
+Check the challlenge_requirement.pdf
